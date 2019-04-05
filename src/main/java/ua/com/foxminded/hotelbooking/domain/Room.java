@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.NaturalId;
-
 import lombok.Data;
 
 @Data
@@ -22,7 +20,6 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-    @NaturalId
     @Column(nullable = false, unique = true)
 	private String roomNumber;
     
