@@ -1,7 +1,6 @@
 package ua.com.foxminded.hotelbooking.domain;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -21,10 +20,5 @@ public class BookingDates {
     @NotNull(message = "Check out date required")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate checkOutDate;
-
-    @Column(nullable = false)
-    @NotNull(message = "Estimated check in time required")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime estimatedCheckInTime;
 
 }

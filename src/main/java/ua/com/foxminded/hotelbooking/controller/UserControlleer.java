@@ -1,7 +1,5 @@
 package ua.com.foxminded.hotelbooking.controller;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.net.URI;
 import java.util.Optional;
 
@@ -42,7 +40,7 @@ public class UserControlleer {
     
     @RequestMapping(value = "/users/{userId}", method = RequestMethod.GET)
     public ResponseEntity<?> getUser(@PathVariable Long userId) {
-        verifyUser(userId);
+        verifyUser(userId); 
         Optional<User> user = userRepository.findById(userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -58,6 +56,6 @@ public class UserControlleer {
                 .buildAndExpand(user.getId())
                 .toUri();
         responseHeaders.setLocation(newUserUri);
-        return new ResponseEntity<>(nullValue(), responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
     }
 }

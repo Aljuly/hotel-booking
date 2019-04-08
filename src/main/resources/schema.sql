@@ -26,9 +26,10 @@ DROP TABLE IF EXISTS booking;
 CREATE TABLE booking(
 	id IDENTITY,
 	roomId BIGINT,
+	checkInDate DATE,
+	checkOutDate Date,
 	dateGenerated DATE,
 	PRIMARY KEY (ID));
-
 	
 DROP TABLE IF EXISTS room_category;
 CREATE TABLE room_category(
