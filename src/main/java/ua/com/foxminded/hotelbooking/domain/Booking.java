@@ -16,12 +16,14 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "booking")
 public class Booking {
 
 	@Id

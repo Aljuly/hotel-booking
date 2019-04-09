@@ -10,7 +10,7 @@ import ua.com.foxminded.hotelbooking.domain.Room;
 
 public interface RoomRepository extends CrudRepository<Room, Long> {
 	
-	public Iterable<Room> findByCategory(Long id);
+	public Iterable<Room> findByRoomCategoryId(Long id);
 	
 	@Query(value = "select r.* from Room r where r.id not in "
 			+ "(select b.roomId from booking b where (:start between b.checkIn and b.checkOut) "
