@@ -27,19 +27,21 @@ import lombok.Data;
 public class Booking {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name = "RESERVATIONID")
 	private UUID reservationId = UUID.randomUUID();
-	
-	@OneToOne(mappedBy = "booking")
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
+    @JoinColumn(name = "ROOMID", referencedColumnName = "ID")
     private Room room;
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
-            name = "booking_users",
-            joinColumns = @JoinColumn(name = "booking_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id")
+            name = "BOOKING_USERS",
+            joinColumns = @JoinColumn(name = "BOOKING_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
     )
 	private Set<User> users = new HashSet<>();
 	
@@ -49,13 +51,13 @@ public class Booking {
 	
 	@ManyToMany
     @JoinTable(
-            name = "booking_options",
-            joinColumns = @JoinColumn(name = "booking_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "option_id", referencedColumnName = "id")
+            name = "BOOKING_OPTIONS",
+            joinColumns = @JoinColumn(name = "BOOKING_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "OPTION_ID", referencedColumnName = "ID")
     )
 	private Set<Option> options = new HashSet<>();
 	
-	@Column(nullable = false)
+	@Column(name = "DATECREATED", nullable = false)
     private LocalDateTime dateCreated;
 
 }

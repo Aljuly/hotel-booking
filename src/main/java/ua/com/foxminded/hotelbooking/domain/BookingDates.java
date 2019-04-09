@@ -11,12 +11,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Embeddable
 public class BookingDates {
 
-	@Column(nullable = false)
+	@Column(name = "CHECKINDATE", nullable = false)
     @NotNull(message = "Check in date required")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate checkInDate;
 
-    @Column(nullable = false)
+    @Column(name = "CHECKOUTDATE", nullable = false)
     @NotNull(message = "Check out date required")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate checkOutDate;

@@ -25,6 +25,7 @@ CREATE TABLE booking_options(
 DROP TABLE IF EXISTS booking;
 CREATE TABLE booking(
 	id IDENTITY,
+	reservationId VARCHAR(255),
 	roomId BIGINT,
 	checkInDate DATE,
 	checkOutDate Date,

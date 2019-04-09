@@ -5,7 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import ua.com.foxminded.hotelbooking.domain.Booking;
-import ua.com.foxminded.hotelbooking.domain.Room;
 
 public interface BookingRepository extends CrudRepository<Booking, Long> {
 	

@@ -31,7 +31,7 @@ public class RoomController {
 
 	@RequestMapping(value = "rooms/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getRoomsByCategory(@PathVariable("id") Long id) {
-		Iterable<Room> allRooms = roomRepository.findByRoomCategoryId(id);
+		Iterable<Room> allRooms = roomRepository.findByRoomCategory_id(id);
 		return new ResponseEntity<>(allRooms, HttpStatus.OK);
 	}
 }
