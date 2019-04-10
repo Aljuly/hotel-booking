@@ -29,7 +29,7 @@ public class BookingController {
 		return new ResponseEntity<>(bookingRepository.findAll(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/bookings/{userId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/bookings/user/{userId}", method = RequestMethod.GET)
 	public ResponseEntity<?> getUserBookings(@PathVariable Long userId) {
 		Iterable<Booking> bookings = bookingRepository.findUserBooking(userId);
 		return new ResponseEntity<>(bookings, HttpStatus.OK);
@@ -37,7 +37,7 @@ public class BookingController {
 	
 	@RequestMapping(value = "/bookings", method = RequestMethod.POST)
 	public ResponseEntity<?> createBuking(@Valid @RequestBody Booking booking) {
-		
+		bookingRepository.save(booking);
 		// Set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newBookingUri = ServletUriComponentsBuilder

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 
 @Data
@@ -28,6 +30,7 @@ public class RoomCategory {
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	@OneToMany(mappedBy = "roomCategory", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private Set<Room> rooms;
 }

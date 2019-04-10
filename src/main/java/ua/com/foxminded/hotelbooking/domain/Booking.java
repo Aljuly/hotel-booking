@@ -1,6 +1,7 @@
 package ua.com.foxminded.hotelbooking.domain;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -17,13 +18,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "booking")
+@Table(name = "BOOKING")
 public class Booking {
 
 	@Id
@@ -58,6 +63,8 @@ public class Booking {
 	private Set<Option> options = new HashSet<>();
 	
 	@Column(name = "DATECREATED", nullable = false)
-    private LocalDateTime dateCreated;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    private Date dateCreated;
 
 }

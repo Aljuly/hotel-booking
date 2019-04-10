@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 
 @Data
@@ -31,7 +33,8 @@ public class Room {
     
     @ManyToOne
     @JoinColumn
-    private RoomCategory roomCategory;
+    @JsonBackReference
+    private RoomCategory category;
 	
     @Column(name = "BEDS", nullable = false)
 	private int beds;

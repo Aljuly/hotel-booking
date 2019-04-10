@@ -1,6 +1,6 @@
 package ua.com.foxminded.hotelbooking.controller;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,8 +22,8 @@ public class RoomController {
 	
 	@RequestMapping(value = "/rooms/dates/{from}/{to}", method = RequestMethod.GET)
 	public ResponseEntity<?> getRoomByDates(
-			@PathVariable("from") @DateTimeFormat(pattern = "ddMMyyy") Date checkIn,
-			@PathVariable("to") @DateTimeFormat(pattern = "ddMMyyy") Date ckeckOut) {
+			@PathVariable("from") @DateTimeFormat(pattern = "dd.MM.yyyy") Date checkIn,
+			@PathVariable("to") @DateTimeFormat(pattern = "dd.MM.yyyy") Date ckeckOut) {
 		Iterable<Room> allrooms = roomRepository.findByDate(checkIn, ckeckOut);
 		
 		return new ResponseEntity<>(allrooms, HttpStatus.OK); 
@@ -31,7 +31,7 @@ public class RoomController {
 
 	@RequestMapping(value = "rooms/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getRoomsByCategory(@PathVariable("id") Long id) {
-		Iterable<Room> allRooms = roomRepository.findByRoomCategory_id(id);
+		Iterable<Room> allRooms = roomRepository.findByCategory(id);
 		return new ResponseEntity<>(allRooms, HttpStatus.OK);
 	}
 }
