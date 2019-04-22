@@ -1,6 +1,9 @@
 package ua.com.foxminded.hotelbooking.controller;
 
 import java.net.URI;
+import java.util.HashSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.validation.Valid;
 
@@ -16,11 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import ua.com.foxminded.hotelbooking.domain.Booking;
+import ua.com.foxminded.hotelbooking.dto.BookingDto;
 import ua.com.foxminded.hotelbooking.repository.BookingRepository;
+import ua.com.foxminded.hotelbooking.utils.TimeProvider;
 
 @RestController
 public class BookingController {
-
+	
+	@Autowired
+	private TimeProvider timeProvider;
+	
 	@Autowired
 	private BookingRepository bookingRepository;
 	
@@ -36,7 +44,13 @@ public class BookingController {
 	}
 	
 	@RequestMapping(value = "/bookings", method = RequestMethod.POST)
-	public ResponseEntity<?> createBuking(@Valid @RequestBody Booking booking) {
+	public ResponseEntity<?> createBooking(@Valid @RequestBody BookingDto bookingDto) {
+		Booking booking = new Booking();
+		booking.setUsers(Stream.of(bookingDto.getUser()).collect(Collectors.toCollection(HashSet::new)));
+		booking.setBookingDates(bookingDto.getBookingDates());
+		booking.setBookedRoom(bookingDto.getRoom());
+		booking.setOptions(bookingDto.getOptions());
+		booking.setDateCreated(timeProvider.localDateTime());
 		bookingRepository.save(booking);
 		// Set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
@@ -48,4 +62,6 @@ public class BookingController {
         responseHeaders.setLocation(newBookingUri);
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
 	}
+
+
 }

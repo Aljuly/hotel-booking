@@ -31,6 +31,6 @@ public class RoomCategory {
 	private String description;
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	@JsonManagedReference
+	@JsonManagedReference(value = "room-category")
 	private Set<Room> rooms;
 }

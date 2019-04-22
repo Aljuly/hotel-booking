@@ -22,8 +22,8 @@ public class RoomController {
 	
 	@RequestMapping(value = "/rooms/dates/{from}/{to}", method = RequestMethod.GET)
 	public ResponseEntity<?> getRoomByDates(
-			@PathVariable("from") @DateTimeFormat(pattern = "dd.MM.yyyy") Date checkIn,
-			@PathVariable("to") @DateTimeFormat(pattern = "dd.MM.yyyy") Date ckeckOut) {
+			@PathVariable("from") @DateTimeFormat(pattern = "yyyy-MM-dd") Date checkIn,
+			@PathVariable("to") @DateTimeFormat(pattern = "yyyy-MM-dd") Date ckeckOut) {
 		Iterable<Room> allrooms = roomRepository.findByDate(checkIn, ckeckOut);
 		
 		return new ResponseEntity<>(allrooms, HttpStatus.OK); 

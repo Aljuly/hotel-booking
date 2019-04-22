@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -23,8 +22,6 @@ import javax.validation.Valid;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import lombok.Data;
 
 @Data
@@ -41,10 +38,9 @@ public class Booking {
     
     @ManyToOne
     @JoinColumn
-    @JsonBackReference
     private Room bookedRoom;
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToMany
     @JoinTable(
             name = "BOOKING_USERS",
             joinColumns = @JoinColumn(name = "BOOKING_ID", referencedColumnName = "ID"),
@@ -65,8 +61,8 @@ public class Booking {
 	private Set<Option> options = new HashSet<>();
 	
 	@Column(name = "DATECREATED", nullable = false)
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date dateCreated;
 
 }

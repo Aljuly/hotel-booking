@@ -8,7 +8,7 @@ import ua.com.foxminded.hotelbooking.domain.Booking;
 
 public interface BookingRepository extends CrudRepository<Booking, Long> {
 	
-	@Query(value = "select b.* from booking b, booking_users u inner join u on u.booking_id = b.id"
+	@Query(value = "select b.* from booking b inner join booking_users u on u.booking_id = b.id"
 			+ " where u.user_id = :userid", nativeQuery = true)
 	public Iterable<Booking> findUserBooking(@Param("userid") Long id);
 }

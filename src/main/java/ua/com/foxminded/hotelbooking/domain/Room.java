@@ -32,12 +32,12 @@ public class Room {
 	private String number;
     
     @OneToMany(mappedBy = "bookedRoom", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference(value = "room-booking")
     private Set<Booking> bookings;
     
     @ManyToOne
     @JoinColumn
-    @JsonBackReference
+    @JsonBackReference(value = "room-category")
     private RoomCategory category;
 	
     @Column(name = "BEDS", nullable = false)
@@ -45,5 +45,6 @@ public class Room {
 	
     @Column(name = "PRICE", nullable = false)
 	private BigDecimal price;
+    
 	
 }

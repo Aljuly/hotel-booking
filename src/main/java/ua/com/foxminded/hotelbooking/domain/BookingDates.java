@@ -10,19 +10,22 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.Data;
+
+@Data
 @Embeddable
 public class BookingDates {
 
 	@Column(name = "CHECKINDATE", nullable = false)
     @NotNull(message = "Check in date required")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd.MM.yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkInDate;
 
     @Column(name = "CHECKOUTDATE", nullable = false)
     @NotNull(message = "Check out date required")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkOutDate;
 
 }
