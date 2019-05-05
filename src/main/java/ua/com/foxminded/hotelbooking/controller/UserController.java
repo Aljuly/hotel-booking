@@ -21,7 +21,7 @@ import ua.com.foxminded.hotelbooking.domain.User;
 import ua.com.foxminded.hotelbooking.repository.UserRepository;
 
 @RestController
-public class UserControlleer {
+public class UserController {
     
     @Autowired
     private UserRepository userRepository;
