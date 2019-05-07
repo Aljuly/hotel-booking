@@ -88,10 +88,7 @@ public class UserControllerTest {
         // verify that service method was called once
         Mockito.verify(userRepository).save(Mockito.any(User.class));
         // analyze response
-        // User resultUser = (new Gson()).fromJson(result.getResponse().getContentAsString(), User.class);
-        // assertNotNull(resultUser, "User not appended");
         assertEquals("http://localhost/users/1", result.getResponse().getHeader(HttpHeaders.LOCATION));
-        // assertEquals(1l, resultUser.getId().longValue(), "Incorrect User");
 	}
     
     @DisplayName("Retrieve User bu Id")

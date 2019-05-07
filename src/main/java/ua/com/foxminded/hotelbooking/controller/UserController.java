@@ -52,7 +52,7 @@ public class UserController {
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newUserUri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .path("/{userId")
+                .path("/{userId}")
                 .buildAndExpand(user.getId())
                 .toUri();
         responseHeaders.setLocation(newUserUri);
