@@ -28,7 +28,7 @@ public class SwaggerConfig {
 
 		return new ApiInfoBuilder().title("Spring Boot Project REST API")
 				.description("Hotel Booking REST API")
-				.contact(new Contact("Alexander Zhulinsky", "", "alzhulinsky@gmail.com"))
+				.contact(new Contact("Alexander Zhulinsky", "www.mysite.com", "alzhulinsky@gmail.com"))
 				.license("Apache 2.0")
 				.licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
 				.version("1.0.0")
