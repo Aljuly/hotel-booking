@@ -1,22 +1,32 @@
 # Hotel booking
-> REST application Hotel booking
+
+> REST Spring Boot application
 
 ## Table of contents
+
 * [General info](#general-info)
-* [Screenshots](#screenshots)
+* [Features](#features)
 * [Technologies](#technologies)
 * [Running the application](#running-the-application)
-* [Features](#features)
+* [Documentation](#documentation)
 * [Status](#status)
-* [Inspiration](#inspiration)
-* [Contact](#contact)
+
 
 ## General info
 
-Add more general information about project. What the purpose of the project is? Motivation?
+This is Hotel Booking management system. This system allows user to register, view available rooms, make bookings for the specified dates. Also user can select some additional hotel services.   
 
-## Screenshots
-![Example screenshot](./img/screenshot.png)
+## Features
+
+This booking service allow to do the next:
+ 
+1. View list of available rooms (room have a number, category, price, additional options like breakfast, cleaning with additional cost) for specified dates.
+2. View rooms filtered by category.
+3. Create user.
+4. User can book the room for specified days.
+5. User can view his booking.
+6. User can get the total price of the booking (room for dates period + cost of additional options).
+7. View all bookings for the hotel.
 
 ## Technologies
 
@@ -38,22 +48,14 @@ Add more general information about project. What the purpose of the project is? 
 - Choose the Spring Boot Application file (search for @SpringBootApplication)
 - Right Click on the file and Run as Java Application
 
+## Documentation
 
-## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* [Postman Collection](https://documenter.getpostman.com/view/2449187/RWTiwzb2) - online, with code auto-generated snippets in cURL, jQuery, Ruby,Python Requests, Node, PHP and Go programming languages
+* [Postman Collection](https://github.com/AnanthaRajuC/Spring-Boot-Application-Template/blob/master/Spring%20Boot%20Template.postman_collection.json) - offline
+* [Swagger](http://localhost:8088/swagger-ui.html) - Documentation & Testing
 
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
 
 ## Status
+
 Project is: _in progress_
 
-## Inspiration
-Add here credits. Project inspired by..., based on...
-
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
