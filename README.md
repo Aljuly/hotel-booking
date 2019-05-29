@@ -57,4 +57,3 @@ This booking service allow to do the next:
 ## Status
 
 Project is: _in progress_
-
