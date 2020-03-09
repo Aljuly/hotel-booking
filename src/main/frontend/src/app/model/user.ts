@@ -1,4 +1,4 @@
-import {Resource} from "./Resource";
+import {Resource} from "./resource";
 
 export class User extends Resource {
   private _firstName: string;

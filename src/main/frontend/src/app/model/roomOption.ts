@@ -1,4 +1,4 @@
-import {Resource} from "./Resource";
+import {Resource} from './resource';
 
 export class RoomOption extends Resource {
   private _optionName: string;
